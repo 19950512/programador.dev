@@ -1,0 +1,89 @@
+:root {
+    --alturaMiniaturas: 174.5px;
+    --mainSize: cover;
+}
+.galeria-miniaturas-render {
+    width: 100%;
+    overflow: hidden;
+    position: relative;
+    background-color: rgb(0, 0, 0);
+    display: block;
+    scrollbar-width: 1px;
+}
+.galeria-miniaturas {
+
+    /* display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center; */
+    height: var(--alturaMiniaturas);
+    position: relative;
+    overflow-x: auto;
+    width: max-content;
+}
+
+/* .galeria-miniaturas-render::after {
+    display: block;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 10%;
+    height: var(--alturaMiniaturas);
+    background: rgb(0,0,0);
+    background: linear-gradient(270deg, rgb(4 4 4) 1%, rgb(4 4 4 / 27%) 33%, rgba(255,255,255,0) 100%);
+    content: ' ';
+} */
+.galeria-miniaturas-render::before {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10%;
+    height: var(--alturaMiniaturas);
+    z-index: 5;
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgb(4 4 4) 1%, rgb(58 58 58 / 27%) 37%, rgba(255,255,255,0) 100%);
+    content: ' ';
+}
+
+.galeria-miniatura {
+    width: calc(var(--alturaMiniaturas) + 20px);
+    margin: 2px;
+    display: inline-block;
+    vertical-align: middle;
+    cursor: pointer;
+    filter: brightness(40%);
+}
+.galeria-miniatura:hover, .galeria-miniatura:active, .galeria-miniatura:focus{
+    filter: brightness(100%);
+}
+.galeria-miniatura-selected {
+    filter: brightness(100%);
+}
+.galeria-miniatura img{
+    display: block;
+    width: 100%;
+    border-radius: 7%;
+}
+.galeria_imagem_main{
+    display: block;
+    width: 100%;
+    height: calc(100vh - var(--alturaMiniaturas));
+    background-color: gray;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: var(--mainSize);
+    position: relative;
+}
+.galeria_imagem_main_legenda{
+    display: block;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    text-align: center;
+    padding: 10px;
+    color: white;
+    box-sizing: border-box;
+    background-color: rgba(0,0,0,.8);
+}
