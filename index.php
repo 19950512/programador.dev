@@ -37,7 +37,7 @@
                         big:"imagens/3.png",
                         small:"imagens/3.png"
                     },
-                    {
+                    /* {
                         big:"imagens/4.png",
                         small:"imagens/4.png"
                     },
@@ -72,7 +72,7 @@
                     {
                         big:"imagens/12.png",
                         small:"imagens/12.png"
-                    },
+                    }, */
                 ],
                 /*'mascara_miniatura': `<div class="galeria-miniatura"><img src="{{big}}" alt="{{algo}}" title="{{algo}}" /></div>`*/
             });
