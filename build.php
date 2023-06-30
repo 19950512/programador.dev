@@ -3,7 +3,7 @@
 
 $controladores = scandir(__DIR__.'/src/Controllers/');
 
-// Vamos pegar o conteúdo de cada controlador e colocar em uma pasta build/nome-do-controlador minificado
+// Vamos pegar o conteúdo de cada controlador e colocar em uma pasta docs/nome-do-controlador minificado
 
 foreach($controladores as $key => $controlador){
     if($controlador === '.' || $controlador === '..' || $controlador === 'Errors' || $controlador === 'Middlewares'){
@@ -17,5 +17,5 @@ foreach($controladores as $key => $controlador){
         $controller = '';
     }
 
-    file_put_contents(__DIR__."/build/".(empty($controller) ? 'home' : $controller).".html", file_get_contents('http://programador.local/'.$controller));
+    file_put_contents(__DIR__."/docs/".(empty($controller) ? 'home' : $controller).".html", file_get_contents('http://programador.local/'.$controller));
 }
