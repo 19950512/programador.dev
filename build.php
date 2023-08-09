@@ -17,5 +17,5 @@ foreach($controladores as $key => $controlador){
         $controller = '';
     }
 
-    file_put_contents(__DIR__."/docs/".(empty($controller) ? 'home' : $controller).".html", file_get_contents('http://programador.local/'.$controller));
+    file_put_contents(__DIR__."/docs/".(empty($controller) ? 'index' : $controller).".html", file_get_contents('http://programador.local/'.$controller));
 }
