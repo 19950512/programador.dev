@@ -1,0 +1,17 @@
+footer{
+    background-color: rgb(236, 184, 116);
+    width: 100%;
+    min-height: 50vh;
+    height: 100%;
+
+    & > div{
+        display: block;
+        width: 100%;
+        max-width: 1024px;
+    }
+
+    & a {
+        display: block;
+        float: right;
+    }
+}

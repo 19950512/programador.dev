@@ -26,7 +26,10 @@ abstract class Controller
 
         $this->blade->setMode(BladeOne::MODE_AUTO);
         
-        $this->bladeVariables = [];
+        $this->bladeVariables = [
+            'ano' => date('Y'),
+            'dominio' => $_SERVER['HTTP_HOST'] ?? '',
+        ];
     }
 
     public function render(string $bladeTemplate, array $variableCustom = []): string
