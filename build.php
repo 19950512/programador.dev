@@ -19,3 +19,10 @@ foreach($controladores as $key => $controlador){
 
     file_put_contents(__DIR__."/docs/".(empty($controller) ? 'index' : $controller).".html", file_get_contents('http://programador.local/'.$controller));
 }
+
+
+// copiar o conteudo da pasta [css] para a pasta docs,
+shell_exec('mkdir -p '. __DIR__.'/docs/css/font');
+shell_exec('cp -r '. __DIR__.'/src/Public/css/font '. __DIR__.'/docs/css');
+shell_exec('cp -r '. __DIR__.'/src/Public/css/site.min.css '. __DIR__.'/docs/css/site.min.css');
+
