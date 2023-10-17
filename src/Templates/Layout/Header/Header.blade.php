@@ -17,6 +17,7 @@
                     <img class="img" src="https://avatars.githubusercontent.com/u/36517599" alt="https://github.com/19950512" title="Github 19950512" />
                 </div>
                 <div><a href="/">Início</a></div>
+                <div><a href="/jiu-jitsu">Jiu-Jitsu</a></div>
                 <div><a href="/sobre">Sobre</a></div>
                 <div><a href="/contato">Contato</a></div>
             </div>

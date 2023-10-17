@@ -1,0 +1,91 @@
+<script src="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/css/splide.min.css" rel="stylesheet">
+
+<!DOCTYPE html>
+<html lang="pt-br">
+ <head>
+ <meta charset="UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ <meta http-equiv="X-UA-Compatible" content="ie=edge">
+ <meta name="robots" content="noindex, noarchive">
+ <meta name="format-detection" content="telephone=no">
+ <base href="programador.local">
+ <link rel="stylesheet" href="/css/site.min.css">
+ <title>Index</title>
+ </head>
+ <body>
+ <header>
+ <div>
+ <div>
+ <img class="img" src="https://avatars.githubusercontent.com/u/36517599" alt="https://github.com/19950512" title="Github 19950512" />
+ </div>
+ <div><a href="/">Início</a></div>
+ <div><a href="/jiu-jitsu">Jiu-Jitsu</a></div>
+ <div><a href="/sobre">Sobre</a></div>
+ <div><a href="/contato">Contato</a></div>
+ </div>
+ </header>
+<main>
+ <div>
+ <h1>Jiu-Jitsu | Five Rounds | Escola de Lutas | Marau -RS</h1>
+
+ <div style="display: block; width: 100%; margin: auto; box-sizing:border-box; padding: 1rem">
+ <div class="splide" role="group" >
+ <div class="splide__track">
+ <ul class="splide__list"></ul>
+ </div>
+ </div>
+ </div>
+ </div>
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+ <br />
+</main>
+
+<footer>
+ <div>
+ <p>
+ © 2023-2023 programador.local. Todos os direitos reservados.
+ <a href="/termos-de-uso" rel="nofollow">Termos de uso</a>
+ <a href="/politicas-de-privacidade" rel="nofollow">Política de privacidade</a>
+ </p>
+ </div>
+ </footer>
+</body><style>
+ .splide__slide__container{
+ height: 80vh;
+ }
+</style>
+
+<script>
+ function htmlDecode(input) {
+ let doc = new DOMParser().parseFromString(input, "text/html");
+ return doc.documentElement.textContent;
+ }
+ const imagens = JSON.parse(htmlDecode('[&quot;3104bdd4-51db-462b-9b7a-74643ab5b790.jpeg&quot;,&quot;5eb6e584-f3c3-4fbb-bdf7-f5168826b120.jpeg&quot;,&quot;7b2ac50d-4721-4b8f-b2f1-92557927b475.jpeg&quot;,&quot;a680112d-6b67-4ce3-ab2f-0e2c5a581ae8.jpeg&quot;,&quot;d6c1a45c-5d9a-47eb-90ae-604658c71bc9.jpeg&quot;,&quot;e29f9f01-7155-4958-8d32-ec781f0462f8.jpeg&quot;]'));
+ document.addEventListener( 'DOMContentLoaded', function() {
+
+ for(i in imagens){
+
+ var li = document.createElement("li");
+ li.className = "splide__slide";
+ document.querySelector(".splide__list").appendChild(li);
+
+ var div = document.createElement("div");
+ div.style = "width: 100vw; height: 80vh; position: relative; overflow: hidden; display: block;";
+ li.appendChild(div);
+
+ var img = document.createElement("img");
+ img.style = "position: absolute; object-fit:cover; width: 100%; height: 100%"
+ img.className = "splide__slide__image";
+ img.src = `/jiujitsu/${imagens[i]}`;
+ div.appendChild(img);
+ }
+
+ var splide = new Splide( '.splide' );
+ splide.mount();
+ });
+</script>

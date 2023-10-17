@@ -12,6 +12,7 @@
         }
     ],
     "require": {
-        "eftec/bladeone": "^4.9"
+        "eftec/bladeone": "^4.9",
+        "larapack/dd": "1.*"
     }
 }
