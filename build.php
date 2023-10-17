@@ -23,6 +23,8 @@ foreach($controladores as $key => $controlador){
 
 // copiar o conteudo da pasta [css] para a pasta docs,
 shell_exec('mkdir -p '. __DIR__.'/docs/css/font');
+shell_exec('mkdir -p '. __DIR__.'/docs/css/jiujitsu');
+shell_exec('cp -r '. __DIR__.'/src/Public/jiujitsu '. __DIR__.'/docs/jiujitsu');
 shell_exec('cp -r '. __DIR__.'/src/Public/css/font '. __DIR__.'/docs/css');
 shell_exec('cp -r '. __DIR__.'/src/Public/css/site.min.css '. __DIR__.'/docs/css/site.min.css');
 
