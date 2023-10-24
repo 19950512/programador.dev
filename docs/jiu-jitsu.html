@@ -25,17 +25,49 @@
  <div><a href="/contato">Contato</a></div>
  </div>
  </header>
+<style>
+ .splide {
+ margin: 0 auto;
+ }
+
+ .thumbnails {
+ display: flex;
+ margin: 1rem auto 0;
+ padding: 0;
+ justify-content: center;
+ }
+
+ .thumbnail {
+ width: 70px;
+ height: 70px;
+ overflow: hidden;
+ list-style: none;
+ margin: 0 0.2rem;
+ cursor: pointer;
+ opacity: 0.3;
+ }
+
+ .thumbnail.is-active {
+ opacity: 1;
+ }
+
+ .thumbnail img {
+ width: 100%;
+ height: auto;
+ }
+</style>
 <main>
  <div>
  <h1>Jiu-Jitsu | Five Rounds | Escola de Lutas | Marau -RS</h1>
 
- <div style="display: block; width: 100%; margin: auto; box-sizing:border-box; padding: 1rem">
- <div class="splide" role="group" >
+
+ <section id="main-slider" class="splide" style="height: 70vh;" aria-label="My Awesome Gallery">
  <div class="splide__track">
  <ul class="splide__list"></ul>
  </div>
- </div>
- </div>
+ </section>
+ <ul id="thumbnails" class="thumbnails"></ul>
+
  </div>
  <br />
  <br />
@@ -54,38 +86,78 @@
  </p>
  </div>
  </footer>
-</body><style>
- .splide__slide__container{
- height: 80vh;
- }
-</style>
+</body><script>
+ const imagens = JSON.parse(htmlDecode('[&quot;3104bdd4-51db-462b-9b7a-74643ab5b790.jpeg&quot;,&quot;36c3af17-ef79-4bfb-8866-590e034b610a.jpeg&quot;,&quot;5eb6e584-f3c3-4fbb-bdf7-f5168826b120.jpeg&quot;,&quot;7701b5c4-78b9-4bc5-8f91-7b536dfb3bbc.jpeg&quot;,&quot;7b2ac50d-4721-4b8f-b2f1-92557927b475.jpeg&quot;,&quot;a680112d-6b67-4ce3-ab2f-0e2c5a581ae8.jpeg&quot;,&quot;ae0aefec-e4aa-443d-811e-c0daef01ccf4.jpeg&quot;,&quot;b615137d-f812-4488-8242-89958bcc4552.jpeg&quot;,&quot;d6c1a45c-5d9a-47eb-90ae-604658c71bc9.jpeg&quot;,&quot;e29f9f01-7155-4958-8d32-ec781f0462f8.jpeg&quot;]'));
 
-<script>
+ for(i in imagens){
+
+ /* THUMB */
+ var li = document.createElement("li");
+ li.className = "thumbnail";
+ document.querySelector(".thumbnails").appendChild(li);
+
+ /*var div = document.createElement("div");
+ div.style = "width: 100vw; height: 80vh; position: relative; overflow: hidden; display: block;";
+ li.appendChild(div);*/
+
+ var img = document.createElement("img");
+ /*img.style = "position: absolute; object-fit:cover; width: 100%; height: 100%"
+ img.className = "splide__slide__image";*/
+ img.src = `/jiujitsu/${imagens[i]}`;
+ li.appendChild(img);
+
+ /* GALERIA */
+
+ var li2 = document.createElement("li");
+ li2.className = "splide__slide";
+ document.querySelector(".splide__list").appendChild(li2);
+
+ var img2 = document.createElement("img");
+ /*img.style = "position: absolute; object-fit:cover; width: 100%; height: 100%"
+ img.className = "splide__slide__image";*/
+ img2.src = `/jiujitsu/${imagens[i]}`;
+ li2.appendChild(img2);
+
+ }
+
  function htmlDecode(input) {
  let doc = new DOMParser().parseFromString(input, "text/html");
  return doc.documentElement.textContent;
  }
- const imagens = JSON.parse(htmlDecode('[&quot;3104bdd4-51db-462b-9b7a-74643ab5b790.jpeg&quot;,&quot;5eb6e584-f3c3-4fbb-bdf7-f5168826b120.jpeg&quot;,&quot;7b2ac50d-4721-4b8f-b2f1-92557927b475.jpeg&quot;,&quot;a680112d-6b67-4ce3-ab2f-0e2c5a581ae8.jpeg&quot;,&quot;d6c1a45c-5d9a-47eb-90ae-604658c71bc9.jpeg&quot;,&quot;e29f9f01-7155-4958-8d32-ec781f0462f8.jpeg&quot;]'));
- document.addEventListener( 'DOMContentLoaded', function() {
 
- for(i in imagens){
+ var splide = new Splide("#main-slider", {
+ pagination: false,
+ cover: true
+ });
 
- var li = document.createElement("li");
- li.className = "splide__slide";
- document.querySelector(".splide__list").appendChild(li);
+ var thumbnails = document.getElementsByClassName("thumbnail");
+ var current;
 
- var div = document.createElement("div");
- div.style = "width: 100vw; height: 80vh; position: relative; overflow: hidden; display: block;";
- li.appendChild(div);
-
- var img = document.createElement("img");
- img.style = "position: absolute; object-fit:cover; width: 100%; height: 100%"
- img.className = "splide__slide__image";
- img.src = `/jiujitsu/${imagens[i]}`;
- div.appendChild(img);
+ for (var i = 0; i < thumbnails.length; i++) {
+ initThumbnail(thumbnails[i], i);
  }
 
- var splide = new Splide( '.splide' );
+ function initThumbnail(thumbnail, index) {
+ thumbnail.addEventListener("click", function () {
+ splide.go(index);
+ });
+ }
+
+ splide.on("mounted move", function () {
+ var thumbnail = thumbnails[splide.index];
+
+ if (thumbnail) {
+ if (current) {
+ current.classList.remove("is-active");
+ }
+
+ thumbnail.classList.add("is-active");
+ current = thumbnail;
+ }
+ });
+
  splide.mount();
+ document.addEventListener( 'DOMContentLoaded', function() {
+
  });
 </script>
